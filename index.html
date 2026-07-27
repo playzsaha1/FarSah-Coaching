@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarSah Coaching | AI Study Platform</title>
+    <meta
+      name="description"
+      content="FarSah Coaching is an AI-powered study, exam preparation, accountability, and coaching platform for ambitious students."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="FarSah Coaching home">
+        <span class="brand-mark">FC</span>
+        <span>FarSah Coaching</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#platform">Platform</a>
+        <a href="#ai-tools">AI Tools</a>
+        <a href="#beta">Beta</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <img src="assets/farsah-hero.png" alt="A modern study desk with exam preparation materials and learning analytics." />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Private beta now open</p>
+          <h1 id="hero-title">FarSah Coaching</h1>
+          <p class="hero-copy">
+            AI tutoring, exam simulation, competitive study groups, and accountability coaching in one premium learning
+            workspace.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#beta">Request beta access</a>
+            <a class="button secondary" href="#platform">Explore platform</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="Platform highlights">
+        <div>
+          <strong>100+</strong>
+          <span>student levels</span>
+        </div>
+        <div>
+          <strong>24/7</strong>
+          <span>AI coaching</span>
+        </div>
+        <div>
+          <strong>14</strong>
+          <span>exam systems</span>
+        </div>
+        <div>
+          <strong>Beta</strong>
+          <span>full access</span>
+        </div>
+      </section>
+
+      <section class="section workspace-section" id="platform">
+        <div class="section-heading">
+          <p class="eyebrow">Product Experience</p>
+          <h2>One workspace for motivated students</h2>
+          <p>
+            FarSah Coaching combines personal AI support with structured competition, progress analytics, reminders, and
+            secure account controls.
+          </p>
+        </div>
+
+        <div class="app-shell">
+          <aside class="sidebar" aria-label="App sections">
+            <button class="tab active" data-tab="overview" type="button">Overview</button>
+            <button class="tab" data-tab="tutor" type="button">AI Tutor</button>
+            <button class="tab" data-tab="exams" type="button">Exams</button>
+            <button class="tab" data-tab="groups" type="button">Groups</button>
+            <button class="tab" data-tab="analytics" type="button">Analytics</button>
+            <button class="tab" data-tab="settings" type="button">Settings</button>
+            <button class="tab" data-tab="admin" type="button">Beta Admin</button>
+          </aside>
+
+          <div class="panel active" id="overview">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Student Dashboard</p>
+                <h3>Sahaan K.</h3>
+              </div>
+              <span class="badge">Beta Tester</span>
+            </div>
+            <div class="dashboard-grid">
+              <article class="stat-card">
+                <span>Level</span>
+                <strong>38</strong>
+                <small>2,840 XP to next level</small>
+              </article>
+              <article class="stat-card accent-coral">
+                <span>Study streak</span>
+                <strong>21 days</strong>
+                <small>At risk after 8:30 PM</small>
+              </article>
+              <article class="stat-card accent-green">
+                <span>Exam countdown</span>
+                <strong>14 days</strong>
+                <small>Mathematics Advanced trial</small>
+              </article>
+              <article class="stat-card accent-gold">
+                <span>Leaderboard</span>
+                <strong>#4</strong>
+                <small>Passed two friends this week</small>
+              </article>
+            </div>
+            <div class="split-layout">
+              <article class="feature-card">
+                <h4>Today&apos;s coaching plan</h4>
+                <ul class="check-list">
+                  <li>45 min calculus weak-topic repair</li>
+                  <li>20 flashcards from uploaded chemistry notes</li>
+                  <li>Timed 12-question HSC short answer drill</li>
+                </ul>
+              </article>
+              <article class="feature-card">
+                <h4>Notifications</h4>
+                <ul class="activity-list">
+                  <li>AI detected lower accuracy in integration by parts.</li>
+                  <li>Your group challenge starts at 6:00 PM.</li>
+                  <li>Weekly XP results publish tomorrow morning.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel" id="tutor">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">AI Study Assistant</p>
+                <h3>Adaptive tutoring</h3>
+              </div>
+              <span class="badge neutral">24/7</span>
+            </div>
+            <div class="tool-layout">
+              <label>
+                Weak topic
+                <input id="topicInput" value="Projectile motion with calculus" />
+              </label>
+              <label>
+                Explanation level
+                <select id="levelInput">
+                  <option>Year 12 exam-ready</option>
+                  <option>Year 10 foundations</option>
+                  <option>Extension challenge</option>
+                </select>
+              </label>
+              <button class="button primary" id="coachButton" type="button">Generate coaching plan</button>
+            </div>
+            <div class="response-box" id="coachOutput">
+              Choose a topic to receive a step-by-step explanation, mistake analysis, example question, and improvement
+              plan.
+            </div>
+          </div>
+
+          <div class="panel" id="exams">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">AI Exam Generator</p>
+                <h3>Realistic practice papers</h3>
+              </div>
+              <span class="badge">AI Marking</span>
+            </div>
+            <div class="exam-builder">
+              <label>
+                Exam system
+                <select>
+                  <option>NSW HSC</option>
+                  <option>SAT</option>
+                  <option>ACT</option>
+                  <option>AP Exams</option>
+                  <option>GCSE</option>
+                  <option>A-Level</option>
+                  <option>IB Diploma</option>
+                </select>
+              </label>
+              <label>
+                Subject
+                <select>
+                  <option>Mathematics Advanced</option>
+                  <option>English Advanced</option>
+                  <option>Biology</option>
+                  <option>Chemistry</option>
+                  <option>Physics</option>
+                  <option>Economics</option>
+                </select>
+              </label>
+              <label>
+                Questions
+                <input type="number" min="5" max="80" value="24" />
+              </label>
+              <label>
+                Time limit
+                <input type="number" min="15" max="180" value="90" />
+              </label>
+            </div>
+            <div class="paper-preview">
+              <h4>Generated paper includes</h4>
+              <p>Multiple choice, short answer, extended response, mark allocations, examiner instructions, and marking criteria.</p>
+              <button class="button primary" type="button">Create exam simulation</button>
+            </div>
+          </div>
+
+          <div class="panel" id="groups">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Study Groups</p>
+                <h3>Competition and accountability</h3>
+              </div>
+              <span class="badge neutral">Invite code: FSAH-204</span>
+            </div>
+            <div class="leaderboard">
+              <div><strong>1</strong><span>Maya</span><em>8,920 XP</em></div>
+              <div><strong>2</strong><span>Leo</span><em>8,210 XP</em></div>
+              <div><strong>3</strong><span>Ari</span><em>7,960 XP</em></div>
+              <div class="current"><strong>4</strong><span>Sahaan</span><em>7,680 XP</em></div>
+            </div>
+            <p class="muted">
+              Verified sessions can use note photos, completed tasks, uploaded assignments, or AI-reviewed work evidence.
+            </p>
+          </div>
+
+          <div class="panel" id="analytics">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Analytics</p>
+                <h3>Academic improvement signals</h3>
+              </div>
+              <span class="badge">Prediction: 88%</span>
+            </div>
+            <div class="chart" aria-label="Subject performance chart">
+              <span style="--height: 72%"><b>Maths</b></span>
+              <span style="--height: 61%"><b>English</b></span>
+              <span style="--height: 84%"><b>Chem</b></span>
+              <span style="--height: 68%"><b>Physics</b></span>
+              <span style="--height: 76%"><b>Eco</b></span>
+            </div>
+            <div class="split-layout">
+              <article class="feature-card">
+                <h4>Weak areas</h4>
+                <p>Essay structure, projectile motion, equilibrium constants.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Trend</h4>
+                <p>Accuracy is up 11% after two weeks of targeted practice.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel" id="settings">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Account Management</p>
+                <h3>Settings and security</h3>
+              </div>
+              <span class="badge neutral">2FA Ready</span>
+            </div>
+            <div class="settings-grid">
+              <label><input type="checkbox" checked /> Push reminders</label>
+              <label><input type="checkbox" checked /> Email weekly reports</label>
+              <label><input type="checkbox" /> Private profile</label>
+              <label><input type="checkbox" checked /> Leaderboard visibility</label>
+              <label><input type="checkbox" /> Quiet hours after 9 PM</label>
+              <label><input type="checkbox" checked /> Login session memory</label>
+            </div>
+          </div>
+
+          <div class="panel" id="admin">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Beta Management</p>
+                <h3>Invite, monitor, improve</h3>
+              </div>
+              <span class="badge">Admin</span>
+            </div>
+            <div class="dashboard-grid">
+              <article class="stat-card"><span>Beta users</span><strong>184</strong><small>62% weekly retained</small></article>
+              <article class="stat-card accent-green"><span>AI requests</span><strong>9.4k</strong><small>This month</small></article>
+              <article class="stat-card accent-coral"><span>Bug reports</span><strong>27</strong><small>9 high priority</small></article>
+              <article class="stat-card accent-gold"><span>Codes left</span><strong>316</strong><small>Limited-use invites</small></article>
+            </div>
+            <div class="paper-preview">
+              <h4>Feedback categories</h4>
+              <p>Bug report, feature request, AI accuracy, user experience, performance issue, and practice paper quality.</p>
+              <button class="button primary" type="button">Generate beta code</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ai-tools">
+        <div class="section-heading">
+          <p class="eyebrow">AI System</p>
+          <h2>Built for coaching, practice, and feedback</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><h3>AI Tutor</h3><p>Explains difficult concepts, adapts to ability, solves step by step, and analyses mistakes.</p></article>
+          <article class="feature-card"><h3>Exam Generator</h3><p>Creates HSC, SAT, ACT, AP, GCSE, A-Level, and IB papers with real exam structure.</p></article>
+          <article class="feature-card"><h3>AI Marking</h3><p>Scores answers, compares against criteria, predicts performance, and models high-scoring responses.</p></article>
+          <article class="feature-card"><h3>Flashcards</h3><p>Turns notes, PDFs, images, and textbook extracts into spaced repetition decks and quizzes.</p></article>
+          <article class="feature-card"><h3>Planner</h3><p>Builds daily and weekly study schedules from exams, homework, weak topics, and goals.</p></article>
+          <article class="feature-card"><h3>Notifications</h3><p>Supports push, email, and in-app reminders with quiet hours and category-level controls.</p></article>
+        </div>
+      </section>
+
+      <section class="section beta-section" id="beta">
+        <div class="section-heading">
+          <p class="eyebrow">Private Beta</p>
+          <h2>Controlled access before public launch</h2>
+          <p>
+            Students need a unique invitation code. Beta users receive full access to premium tools during the testing
+            period while admins track usage, feedback, crashes, and retention.
+          </p>
+        </div>
+        <form class="beta-form">
+          <label>
+            Email
+            <input type="email" placeholder="student@example.com" />
+          </label>
+          <label>
+            Beta code
+            <input type="text" placeholder="FARSAH-BETA-001" />
+          </label>
+          <button class="button primary" type="button">Validate access</button>
+        </form>
+      </section>
+
+      <section class="section architecture-section" id="roadmap">
+        <div class="section-heading">
+          <p class="eyebrow">Build Plan</p>
+          <h2>Architecture, business model, and launch path</h2>
+        </div>
+        <div class="roadmap">
+          <article>
+            <h3>Architecture</h3>
+            <p>Auth, profiles, subscriptions, groups, XP, notifications, AI jobs, exam content, files, analytics, and admin modules.</p>
+          </article>
+          <article>
+            <h3>Database</h3>
+            <p>Users, profiles, subjects, goals, exams, attempts, marks, groups, memberships, streaks, achievements, codes, feedback.</p>
+          </article>
+          <article>
+            <h3>AI Pipeline</h3>
+            <p>Retrieval, prompt templates, rubric marking, safety checks, weak-topic detection, and personalised study recommendations.</p>
+          </article>
+          <article>
+            <h3>Monetisation</h3>
+            <p>Free tier, $20/month Premium, and $30/month Premium Exam tier with unlimited simulations and marking.</p>
+          </article>
+          <article>
+            <h3>Roadmap</h3>
+            <p>MVP beta, AI exam depth, mobile apps, school dashboards, parent reports, international curricula, and language expansion.</p>
+          </article>
+          <article>
+            <h3>Advantage</h3>
+            <p>Beat generic study tools through verified accountability, exam-specific marking, social motivation, and coaching workflows.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>FarSah Coaching</span>
+      <span>AI-powered study accountability and exam preparation.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
