@@ -1,0 +1,7 @@
+project_id = "farsah-coaching"
+
+[functions.request-dev-otp]
+verify_jwt = false
+
+[functions.verify-dev-otp]
+verify_jwt = false
