@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.validate-dev-session]
 verify_jwt = true
+
+[functions.validate-backup-code]
+verify_jwt = false

@@ -26,6 +26,14 @@
         <button class="button primary" type="submit">Send sign-in link</button>
       </form>
       <p id="requestStatus" class="status-line" role="status"></p>
+      <form id="backupCodeForm" class="stacked-form backup-form" hidden>
+        <label>
+          Backup access code
+          <input name="backupCode" autocomplete="off" placeholder="Enter backup code" required />
+        </label>
+        <button class="button primary" type="submit">Unlock with code</button>
+      </form>
+      <p id="backupStatus" class="status-line" role="status"></p>
     </main>
     <script src="auth.js"></script>
   </body>

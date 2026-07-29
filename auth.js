@@ -21,6 +21,18 @@ async function requireSession() {
   }
 
   const { data } = await supabaseClient.auth.getSession();
+  const backupCode = sessionStorage.getItem("farsah_backup_code");
+
+  if (!data.session && backupCode) {
+    const { data: backupValidation, error: backupError } = await supabaseClient.functions.invoke("validate-backup-code", {
+      body: { backupCode },
+    });
+
+    if (!backupError && backupValidation?.allowed) return;
+
+    sessionStorage.removeItem("farsah_backup_code");
+  }
+
   if (!data.session) {
     window.location.href = "access.html";
     return;
@@ -51,6 +63,7 @@ async function requestOtp(event) {
 
   if (error) {
     setStatus("requestStatus", "Access denied or email could not be sent.", "error");
+    document.querySelector("#backupCodeForm")?.removeAttribute("hidden");
     return;
   }
 
@@ -59,9 +72,38 @@ async function requestOtp(event) {
   window.location.href = "unlock.html";
 }
 
+async function validateBackupCode(event) {
+  event.preventDefault();
+  if (!supabaseClient) {
+    setStatus("backupStatus", "Add your Supabase URL and anon key in config.js first.", "error");
+    return;
+  }
+
+  const form = new FormData(event.currentTarget);
+  const backupCode = String(form.get("backupCode") || "").trim();
+  setStatus("backupStatus", "Checking backup code...");
+
+  const { data, error } = await supabaseClient.functions.invoke("validate-backup-code", {
+    body: { backupCode },
+  });
+
+  if (error || !data?.allowed) {
+    setStatus("backupStatus", "Backup code denied.", "error");
+    return;
+  }
+
+  sessionStorage.setItem("farsah_backup_code", backupCode);
+  setStatus("backupStatus", "Unlocked. Loading the beta arena...", "success");
+  window.setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 650);
+}
+
 document.querySelector("#requestOtpForm")?.addEventListener("submit", requestOtp);
+document.querySelector("#backupCodeForm")?.addEventListener("submit", validateBackupCode);
 document.querySelector("#signOutButton")?.addEventListener("click", async () => {
   await supabaseClient?.auth.signOut();
+  sessionStorage.removeItem("farsah_backup_code");
   window.location.href = "index.html";
 });
 

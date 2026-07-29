@@ -19,6 +19,8 @@ The browser never stores the allowed answer, allowed emails, or generated OTPs. 
 
 - `supabase/functions/request-dev-otp/index.ts`
 - `supabase/functions/verify-dev-otp/index.ts`
+- `supabase/functions/validate-backup-code/index.ts`
+- `supabase/functions/validate-dev-session/index.ts`
 
 Create `config.js` from `config.example.js` and add your public Supabase project URL and anon key:
 
@@ -33,6 +35,7 @@ Set these Supabase function secrets:
 
 ```bash
 supabase secrets set FOUNDER_PROJECT_ANSWER="YOUR_PRIVATE_ANSWER"
+supabase secrets set BACKUP_ACCESS_CODE="YOUR_PRIVATE_BACKUP_CODE"
 supabase secrets set DEV_ACCESS_ROSTER='[
   {"email":"FIRST_DEV_EMAIL","aliases":["farris zaman","farris"]},
   {"email":"SECOND_DEV_EMAIL","aliases":["sahaan kesavan","sahaan"]}
@@ -44,6 +47,8 @@ Deploy the functions:
 ```bash
 supabase functions deploy request-dev-otp
 supabase functions deploy verify-dev-otp
+supabase functions deploy validate-backup-code
+supabase functions deploy validate-dev-session
 ```
 
 Supabase Auth sign-in links are one-time links. Configure expiry, resend limits, and allowed redirect URLs in Supabase Auth settings.
