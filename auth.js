@@ -46,7 +46,7 @@ async function requestOtp(event) {
   setStatus("requestStatus", "Checking developer quest...");
 
   const { data, error } = await supabaseClient.functions.invoke("request-dev-otp", {
-    body: { name, answer },
+    body: { name, answer, redirectTo: `${window.location.origin}${window.location.pathname.replace(/[^/]*$/, "")}dashboard.html` },
   });
 
   if (error) {
@@ -59,49 +59,13 @@ async function requestOtp(event) {
   window.location.href = "unlock.html";
 }
 
-async function verifyOtp(event) {
-  event.preventDefault();
-  if (!supabaseClient) {
-    setStatus("verifyStatus", "Add your Supabase URL and anon key in config.js first.", "error");
-    return;
-  }
-
-  const form = new FormData(event.currentTarget);
-  const name = String(form.get("name") || "").trim();
-  const token = String(form.get("code") || "").trim();
-  setStatus("verifyStatus", "Unlocking beta gate...");
-
-  const { data, error } = await supabaseClient.functions.invoke("verify-dev-otp", {
-    body: { name, token },
-  });
-
-  if (error || !data?.session?.access_token || !data?.session?.refresh_token) {
-    setStatus("verifyStatus", "That code is invalid, expired, or already used.", "error");
-    return;
-  }
-
-  await supabaseClient.auth.setSession({
-    access_token: data.session.access_token,
-    refresh_token: data.session.refresh_token,
-  });
-
-  document.querySelector("#lockIcon")?.classList.add("unlocked");
-  setStatus("verifyStatus", "Unlocked. Loading the beta arena...", "success");
-  window.setTimeout(() => {
-    window.location.href = "dashboard.html";
-  }, 950);
-}
-
 document.querySelector("#requestOtpForm")?.addEventListener("submit", requestOtp);
-document.querySelector("#verifyOtpForm")?.addEventListener("submit", verifyOtp);
 document.querySelector("#signOutButton")?.addEventListener("click", async () => {
   await supabaseClient?.auth.signOut();
   window.location.href = "index.html";
 });
 
-const nameInput = document.querySelector('#verifyOtpForm input[name="name"]');
-if (nameInput) nameInput.value = sessionStorage.getItem("farsah_dev_name") || "";
 const hint = document.querySelector("#unlockHint");
-if (hint) hint.textContent = `Check ${sessionStorage.getItem("farsah_masked_email") || "your developer email"} for the one-time code.`;
+if (hint) hint.textContent = `Check ${sessionStorage.getItem("farsah_masked_email") || "your developer email"} for the one-time sign-in link, then open it in this browser.`;
 
 requireSession();

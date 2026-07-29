@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
   const founderAnswer = normalize(Deno.env.get("FOUNDER_PROJECT_ANSWER"));
   const roster = JSON.parse(Deno.env.get("DEV_ACCESS_ROSTER") || "[]") as DevRecord[];
-  const { name, answer } = await req.json();
+  const { name, answer, redirectTo } = await req.json();
   const normalizedName = normalize(name);
   const normalizedAnswer = normalize(answer);
 
@@ -44,7 +44,10 @@ Deno.serve(async (req) => {
 
   const { error } = await supabase.auth.signInWithOtp({
     email: dev.email,
-    options: { shouldCreateUser: true },
+    options: {
+      emailRedirectTo: typeof redirectTo === "string" ? redirectTo : undefined,
+      shouldCreateUser: true,
+    },
   });
 
   if (error) {

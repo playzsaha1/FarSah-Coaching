@@ -6,7 +6,7 @@ FarSah Coaching is a gamer-inspired AI education beta for tutoring, exam practic
 
 - `index.html` - public beta quest landing page
 - `access.html` - developer name and founder-project challenge
-- `unlock.html` - Supabase email OTP verification with unlock animation
+- `unlock.html` - Supabase sign-in-link waiting screen with unlock animation
 - `dashboard.html` - beta dashboard
 - `ai-tutor.html` - AI tutor quest planner
 - `exams.html` - exam arena
@@ -46,7 +46,7 @@ supabase functions deploy request-dev-otp
 supabase functions deploy verify-dev-otp
 ```
 
-Supabase Auth email OTPs are one-time codes. Configure OTP expiry and resend limits in Supabase Auth settings.
+Supabase Auth sign-in links are one-time links. Configure expiry, resend limits, and allowed redirect URLs in Supabase Auth settings.
 
 ## Run Locally
 
