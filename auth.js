@@ -21,7 +21,16 @@ async function requireSession() {
   }
 
   const { data } = await supabaseClient.auth.getSession();
-  if (!data.session) window.location.href = "access.html";
+  if (!data.session) {
+    window.location.href = "access.html";
+    return;
+  }
+
+  const { data: validation, error } = await supabaseClient.functions.invoke("validate-dev-session");
+  if (error || !validation?.allowed) {
+    await supabaseClient.auth.signOut();
+    window.location.href = "access.html";
+  }
 }
 
 async function requestOtp(event) {

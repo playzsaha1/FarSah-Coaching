@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.verify-dev-otp]
 verify_jwt = false
+
+[functions.validate-dev-session]
+verify_jwt = true
