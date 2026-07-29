@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tutor | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a class="active" href="ai-tutor.html">AI Tutor</a><a href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="settings.html">Settings</a></nav>
+      <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
+    </header>
+    <main class="page-shell">
+      <section class="page-title"><p class="pill">Coach Bot</p><h1>AI Tutor</h1><p>Generate explanations, mistake reviews, and adaptive quest chains.</p></section>
+      <section class="panel-card">
+        <form class="tool-grid">
+          <label>Weak topic<input id="topicInput" value="Projectile motion with calculus" /></label>
+          <label>Level<select id="levelInput"><option>Year 12 exam-ready</option><option>Year 10 foundations</option><option>Extension challenge</option></select></label>
+          <button class="button primary" id="coachButton" type="button">Generate plan</button>
+        </form>
+        <div class="response-box" id="coachOutput">Pick a topic to create a coaching quest.</div>
+      </section>
+    </main>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

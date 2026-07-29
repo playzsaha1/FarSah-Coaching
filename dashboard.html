@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="ai-tutor.html">AI Tutor</a>
+        <a href="exams.html">Exams</a>
+        <a href="guilds.html">Guilds</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+      <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
+    </header>
+    <main class="page-shell">
+      <section class="page-hero compact">
+        <div>
+          <p class="pill">Beta Arena</p>
+          <h1>Quest Dashboard</h1>
+          <p>Track streaks, XP, exam countdowns, achievements, and today&apos;s coaching missions.</p>
+        </div>
+        <img src="assets/farsah-game-hero.png" alt="Cartoon study arena." />
+      </section>
+      <section class="stats-grid">
+        <article class="game-card"><span>Level</span><strong>38</strong><p>2,840 XP to level 39</p></article>
+        <article class="game-card coral"><span>Streak</span><strong>21</strong><p>Finish a quest before 8:30 PM</p></article>
+        <article class="game-card gold"><span>Boss Exam</span><strong>14d</strong><p>Mathematics Advanced trial</p></article>
+        <article class="game-card aqua"><span>Rank</span><strong>#4</strong><p>Guild leaderboard</p></article>
+      </section>
+      <section class="two-column">
+        <article class="panel-card"><h2>Today&apos;s Quests</h2><ul><li>45 min calculus repair</li><li>20 chemistry flashcards</li><li>12-question HSC drill</li></ul></article>
+        <article class="panel-card"><h2>Power-Ups</h2><ul><li>AI weak-topic detector</li><li>Pomodoro sprint</li><li>Exam countdown shield</li></ul></article>
+      </section>
+    </main>
+    <script src="auth.js"></script>
+  </body>
+</html>

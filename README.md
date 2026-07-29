@@ -1,34 +1,57 @@
 # FarSah Coaching
 
-FarSah Coaching is a premium AI-powered education platform prototype for tutoring, exam preparation, competitive study groups, beta access, analytics, notifications, and student account management.
+FarSah Coaching is a gamer-inspired AI education beta for tutoring, exam practice, XP quests, study guilds, and secure developer-only access.
 
-This repository is currently a zero-dependency static web app:
+## Pages
 
-- `index.html` contains the product interface and platform architecture content.
-- `styles.css` contains the responsive visual system.
-- `script.js` adds dashboard tabs, theme switching, beta-code feedback, and AI coaching demo behavior.
-- `assets/farsah-hero.png` is the generated project hero image.
+- `index.html` - public beta quest landing page
+- `access.html` - developer name and founder-project challenge
+- `unlock.html` - Supabase email OTP verification with unlock animation
+- `dashboard.html` - beta dashboard
+- `ai-tutor.html` - AI tutor quest planner
+- `exams.html` - exam arena
+- `guilds.html` - study guild leaderboard
+- `settings.html` - account and notification controls
 
-## Run locally
+## Supabase Setup
 
-Open `index.html` directly in a browser, or serve the folder:
+The browser never stores the allowed answer, allowed emails, or generated OTPs. Those checks live in Supabase Edge Functions:
+
+- `supabase/functions/request-dev-otp/index.ts`
+- `supabase/functions/verify-dev-otp/index.ts`
+
+Create `config.js` from `config.example.js` and add your public Supabase project URL and anon key:
+
+```js
+window.FARSAH_CONFIG = {
+  SUPABASE_URL: "https://YOUR_PROJECT_ID.supabase.co",
+  SUPABASE_ANON_KEY: "YOUR_SUPABASE_ANON_KEY",
+};
+```
+
+Set these Supabase function secrets:
+
+```bash
+supabase secrets set FOUNDER_PROJECT_ANSWER="YOUR_PRIVATE_ANSWER"
+supabase secrets set DEV_ACCESS_ROSTER='[
+  {"email":"FIRST_DEV_EMAIL","aliases":["farris zaman","farris"]},
+  {"email":"SECOND_DEV_EMAIL","aliases":["sahaan kesavan","sahaan"]}
+]'
+```
+
+Deploy the functions:
+
+```bash
+supabase functions deploy request-dev-otp
+supabase functions deploy verify-dev-otp
+```
+
+Supabase Auth email OTPs are one-time codes. Configure OTP expiry and resend limits in Supabase Auth settings.
+
+## Run Locally
 
 ```bash
 python3 -m http.server 8080
 ```
 
 Then visit `http://127.0.0.1:8080`.
-
-## Product Scope
-
-The prototype covers:
-
-- Secure signup, login, profiles, privacy, 2FA-ready settings, and account controls
-- Notifications for study reminders, motivation, competitions, weak topics, and AI feedback
-- Study groups, friend invites, XP, streaks, achievements, verification, and leaderboards
-- AI tutor, AI exam paper generator, AI marking, flashcards, quizzes, and personalised planning
-- Analytics for study hours, grades, accuracy, weak areas, and performance prediction
-- Private beta invitation codes, beta user badges, admin dashboard, and feedback tracking
-- Free, Premium, and Premium Exam subscription tiers
-
-All branding has been adapted to FarSah Coaching.

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Arena | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a class="active" href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="settings.html">Settings</a></nav>
+      <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
+    </header>
+    <main class="page-shell">
+      <section class="page-title"><p class="pill">Boss Battles</p><h1>Exam Arena</h1><p>Create HSC, SAT, ACT, AP, GCSE, A-Level, and IB simulations with AI marking.</p></section>
+      <section class="panel-card">
+        <div class="tool-grid">
+          <label>Exam system<select><option>NSW HSC</option><option>SAT</option><option>ACT</option><option>AP Exams</option><option>GCSE</option><option>A-Level</option><option>IB Diploma</option></select></label>
+          <label>Subject<select><option>Mathematics Advanced</option><option>English Advanced</option><option>Chemistry</option><option>Physics</option><option>Economics</option></select></label>
+          <label>Questions<input type="number" min="5" max="80" value="24" /></label>
+          <button class="button primary" type="button">Generate boss paper</button>
+        </div>
+      </section>
+      <section class="stats-grid"><article class="game-card"><span>Marking</span><strong>Rubric</strong><p>Criteria-aligned scoring</p></article><article class="game-card coral"><span>Feedback</span><strong>Instant</strong><p>Mistakes and upgrades</p></article><article class="game-card gold"><span>Essays</span><strong>Deep</strong><p>Structure and evidence review</p></article></section>
+    </main>
+    <script src="auth.js"></script>
+  </body>
+</html>

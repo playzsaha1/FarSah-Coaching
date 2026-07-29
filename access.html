@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Access | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+  </head>
+  <body class="gate-body">
+    <main class="access-card">
+      <a class="brand" href="index.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <div class="quest-badge">Step 1</div>
+      <h1>Developer Access</h1>
+      <p class="muted">Only approved developers can request a one-time Supabase email code.</p>
+      <form id="requestOtpForm" class="stacked-form">
+        <label>
+          Developer name
+          <input name="name" autocomplete="name" placeholder="Your full name" required />
+        </label>
+        <label>
+          What was the founders first project?
+          <input name="answer" autocomplete="off" placeholder="Answer" required />
+        </label>
+        <button class="button primary" type="submit">Get one-time code</button>
+      </form>
+      <p id="requestStatus" class="status-line" role="status"></p>
+    </main>
+    <script src="auth.js"></script>
+  </body>
+</html>

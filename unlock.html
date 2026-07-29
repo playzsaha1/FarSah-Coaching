@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unlock Beta | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+  </head>
+  <body class="gate-body">
+    <main class="access-card unlock-card">
+      <a class="brand" href="index.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <div class="lock-stage" aria-hidden="true">
+        <div class="lock-icon" id="lockIcon"></div>
+      </div>
+      <div class="quest-badge">Step 2</div>
+      <h1>Enter Code</h1>
+      <p class="muted" id="unlockHint">Check your developer email for the one-time code.</p>
+      <form id="verifyOtpForm" class="stacked-form">
+        <label>
+          Developer name
+          <input name="name" autocomplete="name" placeholder="Your full name" required />
+        </label>
+        <label>
+          One-time code
+          <input name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="123456" required />
+        </label>
+        <button class="button primary" type="submit">Unlock beta</button>
+      </form>
+      <p id="verifyStatus" class="status-line" role="status"></p>
+    </main>
+    <script src="auth.js"></script>
+  </body>
+</html>
