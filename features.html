@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Features | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a class="active" href="features.html">Features</a><a href="subscription.html">Plans</a><a href="founders.html">Founders</a><a href="settings.html">Settings</a></nav>
+      <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
+    </header>
+    <main class="page-shell">
+      <section class="page-title"><p class="pill">No Services Needed</p><h1>Big Features</h1><p>Five powerful beta tools that run locally in the browser.</p></section>
+      <section class="feature-grid">
+        <article class="panel-card"><h2>Focus Timer</h2><p>Run sprint sessions, track minutes, and reset when you need a fresh attempt.</p><div class="timer-display" id="timerDisplay">25:00</div><button class="button primary" id="timerButton" type="button">Start timer</button></article>
+        <article class="panel-card"><h2>Flashcard Forge</h2><p>Create instant cards from your own prompt and answer.</p><label>Question<input id="flashQuestion" placeholder="Question" /></label><label>Answer<input id="flashAnswer" placeholder="Answer" /></label><button class="button primary" id="saveFlashcard" type="button">Save card</button></article>
+        <article class="panel-card"><h2>Exam Countdown</h2><p>Set a date and keep the next big milestone visible.</p><label>Exam date<input id="examDate" type="date" /></label><button class="button primary" id="saveExamDate" type="button">Save date</button><p id="countdownOutput" class="status-line"></p></article>
+        <article class="panel-card"><h2>Notes Vault</h2><p>Store quick revision notes locally in this browser.</p><textarea id="notesVault" placeholder="Write study notes here"></textarea><button class="button primary" id="saveNotes" type="button">Save notes</button></article>
+        <article class="panel-card"><h2>Progress Tracker</h2><p>Log completed sessions and watch your total grow.</p><label>Minutes studied<input id="studyMinutes" type="number" min="1" placeholder="45" /></label><button class="button primary" id="addStudySession" type="button">Add session</button><p id="progressOutput" class="status-line"></p></article>
+      </section>
+      <section class="panel-card"><h2>Saved Flashcards</h2><div id="flashcardList" class="mini-list">No cards yet.</div></section>
+    </main>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

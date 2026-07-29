@@ -14,6 +14,9 @@
         <a href="ai-tutor.html">AI Tutor</a>
         <a href="exams.html">Exams</a>
         <a href="guilds.html">Guilds</a>
+        <a href="features.html">Features</a>
+        <a href="subscription.html">Plans</a>
+        <a href="founders.html">Founders</a>
         <a href="settings.html">Settings</a>
       </nav>
       <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
@@ -22,22 +25,23 @@
       <section class="page-hero compact">
         <div>
           <p class="pill">Beta Arena</p>
-          <h1>Quest Dashboard</h1>
-          <p>Track streaks, XP, exam countdowns, achievements, and today&apos;s coaching missions.</p>
+          <h1>Welcome, <span data-profile="name">Student</span></h1>
+          <p>Your beta command center updates from the profile and study options you choose in Settings.</p>
         </div>
         <img src="assets/farsah-game-hero.png" alt="Cartoon study arena." />
       </section>
       <section class="stats-grid">
-        <article class="game-card"><span>Level</span><strong>38</strong><p>2,840 XP to level 39</p></article>
-        <article class="game-card coral"><span>Streak</span><strong>21</strong><p>Finish a quest before 8:30 PM</p></article>
-        <article class="game-card gold"><span>Boss Exam</span><strong>14d</strong><p>Mathematics Advanced trial</p></article>
-        <article class="game-card aqua"><span>Rank</span><strong>#4</strong><p>Guild leaderboard</p></article>
+        <article class="game-card"><span>Year Level</span><strong data-profile="yearLevel">Set</strong><p>Choose your grade in Settings.</p></article>
+        <article class="game-card coral"><span>Main Subject</span><strong data-profile="subject">Set</strong><p>Your current study focus.</p></article>
+        <article class="game-card gold"><span>Exam Goal</span><strong data-profile="examGoal">Set</strong><p>Your next boss battle.</p></article>
+        <article class="game-card aqua"><span>Study Mode</span><strong data-profile="studyMode">Set</strong><p>Solo, guild, sprint, or exam mode.</p></article>
       </section>
       <section class="two-column">
-        <article class="panel-card"><h2>Today&apos;s Quests</h2><ul><li>45 min calculus repair</li><li>20 chemistry flashcards</li><li>12-question HSC drill</li></ul></article>
-        <article class="panel-card"><h2>Power-Ups</h2><ul><li>AI weak-topic detector</li><li>Pomodoro sprint</li><li>Exam countdown shield</li></ul></article>
+        <article class="panel-card"><h2>Your Quest Board</h2><ul id="questList"><li>Add your goals in Settings to build a personal quest board.</li></ul></article>
+        <article class="panel-card"><h2>Unlocked Tools</h2><ul><li>Focus timer</li><li>Flashcard forge</li><li>Exam countdown</li><li>Notes vault</li><li>Progress tracker</li></ul></article>
       </section>
     </main>
     <script src="auth.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

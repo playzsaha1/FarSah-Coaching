@@ -9,20 +9,33 @@
   <body>
     <header class="topbar">
       <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
-      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a class="active" href="settings.html">Settings</a></nav>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="features.html">Features</a><a href="subscription.html">Plans</a><a href="founders.html">Founders</a><a class="active" href="settings.html">Settings</a></nav>
       <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
     </header>
     <main class="page-shell">
-      <section class="page-title"><p class="pill">Control Room</p><h1>Settings</h1><p>Manage profile privacy, notifications, security, and beta account status.</p></section>
+      <section class="page-title"><p class="pill">Control Room</p><h1>Settings</h1><p>Add your own profile, subjects, goals, and preferences. Everything stays in this browser.</p></section>
+      <section class="panel-card">
+        <h2>Your Study Profile</h2>
+        <form class="profile-grid" id="profileForm">
+          <label>Name<input name="name" placeholder="Your name" /></label>
+          <label>Year level<input name="yearLevel" placeholder="Year 11, Year 12, GCSE, IB..." /></label>
+          <label>Main subject<input name="subject" placeholder="Your main focus" /></label>
+          <label>Exam goal<input name="examGoal" placeholder="Your next exam or goal" /></label>
+          <label>Study mode<select name="studyMode"><option>Solo</option><option>Guild</option><option>Sprint</option><option>Exam</option></select></label>
+          <label>Daily study target<input name="dailyTarget" placeholder="Example: 90 minutes" /></label>
+          <label class="full-width">Quest list<textarea name="quests" placeholder="One goal per line"></textarea></label>
+          <button class="button primary" type="submit">Save profile</button>
+        </form>
+        <p id="profileStatus" class="status-line" role="status"></p>
+      </section>
       <section class="settings-grid">
-        <label><input type="checkbox" checked /> Push reminders</label>
-        <label><input type="checkbox" checked /> Email weekly reports</label>
-        <label><input type="checkbox" /> Private profile</label>
-        <label><input type="checkbox" checked /> Leaderboard visibility</label>
-        <label><input type="checkbox" /> Quiet hours after 9 PM</label>
-        <label><input type="checkbox" checked /> Two-factor ready</label>
+        <label><input type="checkbox" checked /> Show game-style UI</label>
+        <label><input type="checkbox" checked /> Save progress locally</label>
+        <label><input type="checkbox" /> Private beta display mode</label>
+        <label><input type="checkbox" checked /> Show subscription preview</label>
       </section>
     </main>
     <script src="auth.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
