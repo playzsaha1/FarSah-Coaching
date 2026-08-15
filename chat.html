@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat | FarSah Coaching</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="features.html">Features</a><a class="active" href="chat.html">Chat</a><a href="subscription.html">Plans</a><a href="founders.html">Founders</a><a href="settings.html">Settings</a></nav>
+      <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
+    </header>
+    <main class="page-shell">
+      <section class="page-title"><p class="pill">Beta Room</p><h1>Study Chat</h1><p>Test the chat experience locally while the beta is still running without an online chat service.</p></section>
+      <section class="chat-layout">
+        <article class="panel-card">
+          <h2>Send Message</h2>
+          <form class="stacked-form" id="chatForm">
+            <label>Your name<input name="name" id="chatName" placeholder="Sahaan" /></label>
+            <label>Message<textarea name="message" id="chatMessage" placeholder="Share an update, question, or study win."></textarea></label>
+            <button class="button primary" type="submit">Post message</button>
+            <button class="button secondary" id="clearChat" type="button">Clear local chat</button>
+          </form>
+        </article>
+        <article class="panel-card">
+          <h2>Room Feed</h2>
+          <div class="chat-feed" id="chatFeed"></div>
+        </article>
+      </section>
+    </main>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

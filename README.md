@@ -12,6 +12,7 @@ FarSah Coaching is a gamer-inspired AI education beta for tutoring, exam practic
 - `exams.html` - exam arena
 - `guilds.html` - study guild leaderboard
 - `features.html` - five local-only beta tools
+- `chat.html` - local beta chat room
 - `subscription.html` - subscription plan preview
 - `founders.html` - founder profiles
 - `settings.html` - account and notification controls
@@ -20,8 +21,8 @@ FarSah Coaching is a gamer-inspired AI education beta for tutoring, exam practic
 
 The beta gate is fully local.
 
-- Founder answer: stored in `auth.js`
-- Access code: stored in `auth.js`
+- Founder answer: checked against a SHA-256 hash in `auth.js`
+- Access code: checked against a SHA-256 hash in `auth.js`
 - Browser access state: stored in `sessionStorage`
 
 This is intended for a simple beta gate on a static site. Because the code is in frontend JavaScript, it can be inspected by someone determined enough.
@@ -35,8 +36,9 @@ The beta workspace includes local-only tools that do not require external servic
 - Exam countdown
 - Notes vault
 - Progress tracker
+- Local beta chat
 
-Profile, guild, notes, flashcards, countdown, and progress values are stored in browser `localStorage`.
+Profile, guild, notes, flashcards, countdown, progress, and chat values are stored in browser `localStorage`.
 
 ## Run Locally
 

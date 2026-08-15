@@ -4,6 +4,7 @@ const FLASHCARD_KEY = "farsah_flashcards";
 const NOTES_KEY = "farsah_notes";
 const EXAM_DATE_KEY = "farsah_exam_date";
 const PROGRESS_KEY = "farsah_progress_minutes";
+const CHAT_KEY = "farsah_chat_messages";
 
 function readJson(key, fallback) {
   try {
@@ -79,19 +80,51 @@ document.querySelector("#profileForm")?.addEventListener("submit", (event) => {
 const coachButton = document.querySelector("#coachButton");
 const topicInput = document.querySelector("#topicInput");
 const levelInput = document.querySelector("#levelInput");
+const styleInput = document.querySelector("#styleInput");
+const timeInput = document.querySelector("#timeInput");
 
 coachButton?.addEventListener("click", () => {
   const topic = topicInput.value.trim() || "your selected topic";
   const level = levelInput.value;
+  const style = styleInput?.value || "Step-by-step";
+  const time = timeInput?.value || "20 minutes";
+  const focus = topic.toLowerCase().includes("essay")
+    ? "thesis, evidence, paragraph structure, and timed response polish"
+    : topic.toLowerCase().includes("calculus")
+      ? "definitions, graph meaning, worked substitutions, and exam traps"
+      : "core meaning, worked examples, error checks, and recall practice";
 
   document.querySelector("#coachOutput").innerHTML = `
-    <strong>${escapeHtml(topic)}</strong><br>
-    Quest plan for <strong>${escapeHtml(level)}</strong>:
-    <br>1. warm-up recap,
-    <br>2. worked example with trap alerts,
-    <br>3. adaptive practice streak,
-    <br>4. self-marked reflection,
-    <br>5. revision reminder if accuracy stays under 80%.
+    <div class="coach-plan">
+      <div><strong>${escapeHtml(topic)}</strong> for <strong>${escapeHtml(level)}</strong></div>
+      <p>Use a ${escapeHtml(style.toLowerCase())} session for ${escapeHtml(time)}. Focus on ${escapeHtml(focus)}.</p>
+      <ol>
+        <li><strong>Explain it simply:</strong> write the idea in one sentence, then add the key formula, rule, or structure.</li>
+        <li><strong>Worked example:</strong> solve one medium question slowly and mark the exact step where mistakes usually happen.</li>
+        <li><strong>Practice ladder:</strong> do 2 easy, 2 exam-style, and 1 challenge question without looking at notes.</li>
+        <li><strong>Checkpoint:</strong> if you miss more than one question, redo the worked example with different numbers or evidence.</li>
+        <li><strong>Exit ticket:</strong> write one trap, one fix, and one question to ask a tutor next time.</li>
+      </ol>
+    </div>
+  `;
+});
+
+document.querySelector("#generatePaper")?.addEventListener("click", () => {
+  const system = document.querySelector("#examSystem")?.value || "exam";
+  const subject = document.querySelector("#examSubject")?.value || "subject";
+  const questionCount = Math.max(5, Math.min(80, Number(document.querySelector("#examQuestions")?.value || "24")));
+  const difficulty = document.querySelector("#examDifficulty")?.value || "Mixed";
+  const sections = questionCount >= 30 ? "three sections" : questionCount >= 16 ? "two sections" : "one focused section";
+  const minutes = Math.max(20, Math.round(questionCount * 2.5));
+
+  document.querySelector("#examOutput").innerHTML = `
+    <strong>${escapeHtml(subject)} ${escapeHtml(system)} past paper outline</strong>
+    <ul>
+      <li>${questionCount} questions across ${sections}.</li>
+      <li>${escapeHtml(difficulty)} difficulty with a ${minutes} minute timer.</li>
+      <li>Start with short-answer recall, then move into application and one reflection question.</li>
+      <li>After finishing, mark three errors: knowledge gap, rushed step, or wording mistake.</li>
+    </ul>
   `;
 });
 
@@ -207,9 +240,48 @@ document.querySelector("#addStudySession")?.addEventListener("click", () => {
   renderProgress();
 });
 
+function renderChat() {
+  const feed = document.querySelector("#chatFeed");
+  if (!feed) return;
+  const messages = readJson(CHAT_KEY, []);
+  feed.innerHTML = messages.length
+    ? messages.map((item) => `
+      <div class="chat-message">
+        <strong>${escapeHtml(item.name)}</strong>
+        <p>${escapeHtml(item.message)}</p>
+        <time>${escapeHtml(item.time)}</time>
+      </div>
+    `).join("")
+    : '<div class="chat-message"><strong>FarSah Beta</strong><p>No messages yet. Post the first study update.</p><time>Local room</time></div>';
+  feed.scrollTop = feed.scrollHeight;
+}
+
+document.querySelector("#chatForm")?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  const name = String(form.get("name") || "").trim() || getProfile().name || "Student";
+  const message = String(form.get("message") || "").trim();
+  if (!message) return;
+  const messages = readJson(CHAT_KEY, []);
+  messages.push({
+    name,
+    message,
+    time: new Date().toLocaleString([], { dateStyle: "medium", timeStyle: "short" }),
+  });
+  localStorage.setItem(CHAT_KEY, JSON.stringify(messages.slice(-60)));
+  document.querySelector("#chatMessage").value = "";
+  renderChat();
+});
+
+document.querySelector("#clearChat")?.addEventListener("click", () => {
+  localStorage.removeItem(CHAT_KEY);
+  renderChat();
+});
+
 renderProfile();
 renderGuild();
 renderTimer();
 renderFlashcards();
 renderCountdown();
 renderProgress();
+renderChat();

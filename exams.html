@@ -9,21 +9,40 @@
   <body>
     <header class="topbar">
       <a class="brand" href="dashboard.html"><span class="brand-mark">FC</span><span>FarSah Coaching</span></a>
-      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a class="active" href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="features.html">Features</a><a href="subscription.html">Plans</a><a href="founders.html">Founders</a><a href="settings.html">Settings</a></nav>
+      <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="ai-tutor.html">AI Tutor</a><a class="active" href="exams.html">Exams</a><a href="guilds.html">Guilds</a><a href="features.html">Features</a><a href="chat.html">Chat</a><a href="subscription.html">Plans</a><a href="founders.html">Founders</a><a href="settings.html">Settings</a></nav>
       <button class="icon-button" id="signOutButton" type="button" title="Sign out">↪</button>
     </header>
     <main class="page-shell">
-      <section class="page-title"><p class="pill">Boss Battles</p><h1>Exam Arena</h1><p>Design local practice sessions from your subject, difficulty, question count, and time limit.</p></section>
+      <section class="page-hero compact">
+        <div>
+          <p class="pill">Past Paper Builder</p>
+          <h1>Exam Arena</h1>
+          <p>Design local practice sessions from your subject, difficulty, question count, and time limit.</p>
+        </div>
+        <div class="exam-visual" aria-hidden="true">
+          <div class="paper-preview">
+            <div class="paper-line short"></div>
+            <div class="paper-line"></div>
+            <div class="paper-line"></div>
+            <div class="paper-line short"></div>
+          </div>
+          <strong>Timed paper preview</strong>
+          <p class="muted">No broken image needed. The session builds from your choices below.</p>
+        </div>
+      </section>
       <section class="panel-card">
         <div class="tool-grid">
-          <label>Exam system<select><option>NSW HSC</option><option>SAT</option><option>ACT</option><option>AP Exams</option><option>GCSE</option><option>A-Level</option><option>IB Diploma</option></select></label>
-          <label>Subject<select><option>Mathematics Advanced</option><option>English Advanced</option><option>Chemistry</option><option>Physics</option><option>Economics</option></select></label>
-          <label>Questions<input type="number" min="5" max="80" value="24" /></label>
-          <button class="button primary" type="button">Generate boss paper</button>
+          <label>Exam system<select id="examSystem"><option>NSW HSC</option><option>SAT</option><option>ACT</option><option>AP Exams</option><option>GCSE</option><option>A-Level</option><option>IB Diploma</option></select></label>
+          <label>Subject<select id="examSubject"><option>Mathematics Advanced</option><option>English Advanced</option><option>Chemistry</option><option>Physics</option><option>Economics</option></select></label>
+          <label>Questions<input id="examQuestions" type="number" min="5" max="80" value="24" /></label>
+          <label>Difficulty<select id="examDifficulty"><option>Mixed</option><option>Foundation</option><option>Standard</option><option>Challenge</option></select></label>
+          <button class="button primary" id="generatePaper" type="button">Generate past paper</button>
         </div>
+        <div class="exam-result" id="examOutput">Choose your setup and generate a practice paper outline.</div>
       </section>
       <section class="stats-grid"><article class="game-card"><span>Mode</span><strong>Timed</strong><p>Build pressure without external tools.</p></article><article class="game-card coral"><span>Review</span><strong>Self</strong><p>Use rubrics and reflection prompts.</p></article><article class="game-card gold"><span>Archive</span><strong>Local</strong><p>Track attempts in your browser.</p></article></section>
     </main>
     <script src="auth.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

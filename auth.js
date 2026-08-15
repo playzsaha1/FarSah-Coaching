@@ -6,6 +6,7 @@ const protectedPages = [
   "exams.html",
   "guilds.html",
   "features.html",
+  "chat.html",
   "subscription.html",
   "founders.html",
   "settings.html",
