@@ -1,0 +1,28 @@
+{
+  "name": "FarSah Coaching",
+  "short_name": "FarSah",
+  "description": "FarSah Coaching is a gamer-inspired AI education beta for tutoring, exam practice, XP quests, study guilds, and developer access.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f9ee",
+  "theme_color": "#58cc02",
+  "icons": [
+    {
+      "src": "assets/farsah-study-hero.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/farsah-study-hero.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "prefer_related_applications": false
+}

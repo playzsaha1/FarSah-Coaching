@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://far-sah-coaching.vercel.app/sitemap.xml
+
+# Disallow access to sensitive pages during beta
+User-agent: *
+Disallow: /unlock.html
+Disallow: /access.html
